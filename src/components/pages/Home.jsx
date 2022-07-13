@@ -3,7 +3,9 @@ import React from "react";
 function Home() {
   return (
     <>
-      <h1 class="title is-2">CEB Media Hub</h1>
+        <div>
+            <p>Home</p>
+        </div>
     </>
   )
 }

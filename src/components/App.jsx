@@ -1,28 +1,28 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Nav from './Nav'
 import Home from './pages/Home'
 import Greeting from './Greeting'
 import Comment from './Comment'
 import Card from './Card'
+import CategorySelection from './pages/CategorySelection'
+import NewEntry from './pages/NewEntry'
 
 function App() {
 
-  const message = "This is just a test."
-
-  const styles = {
-    color: 'red',
-    fontSize: '30px'
-  }
-
   return (
     <>
-      <Nav />
-      <Home />
-      <Greeting firstName='UserName'/>
-        <div style={styles}>
-          {message}
-        </div>
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/category' element={<CategorySelection />} />
+          <Route path='/entry/new' element={<NewEntry />} />
+          <Route path='*' element={<h4>Page not found</h4>} />
+        </Routes>
+      </BrowserRouter>
+      {/* <Greeting firstName='UserName'/>
       <section className="comments">
-        <h1 class='title is-4'>Blogs</h1>
+        <h1 class=''>Blogs</h1>
         <Card>
           <Comment userName='Ethan' date='10/11/21'>
             <p>comment content</p>
@@ -38,7 +38,7 @@ function App() {
             <p>comment content</p>
           </Comment>
         </Card>
-      </section>
+      </section> */}
     </>
   )
 }

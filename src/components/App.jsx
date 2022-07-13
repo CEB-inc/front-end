@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Nav from './Nav'
 import Home from './pages/Home'
@@ -8,19 +9,21 @@ import CategorySelection from './pages/CategorySelection'
 import NewEntry from './pages/NewEntry'
 
 function App() {
+  const [entries, setEntries] = useState([])
 
   return (
-    <>
-      <BrowserRouter>
-        <Nav />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/category' element={<CategorySelection />} />
-          <Route path='/entry/new' element={<NewEntry />} />
-          <Route path='*' element={<h4>Page not found</h4>} />
-        </Routes>
-      </BrowserRouter>
-      {/* <Greeting firstName='UserName'/>
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path='/' element={<Home entries={entries} />} />
+        <Route path='/category' element={<CategorySelection />} />
+        <Route path='/entry/new/:category' element={<NewEntry entries={entries} setEntries={setEntries} />} />
+        <Route path='*' element={<h4>Page not found</h4>} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
+      /* <Greeting firstName='UserName'/>
       <section className="comments">
         <h1 class=''>Blogs</h1>
         <Card>
@@ -38,9 +41,6 @@ function App() {
             <p>comment content</p>
           </Comment>
         </Card>
-      </section> */}
-    </>
-  )
-}
+      </section> */
 
 export default App

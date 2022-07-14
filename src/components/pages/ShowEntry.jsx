@@ -7,7 +7,6 @@ function ShowEntry({ entry }) {
   ) : (
     <p>Loading ...</p>
   )
-  )
 }
 
 export default ShowEntry

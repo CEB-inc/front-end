@@ -12,7 +12,10 @@ import ShowEntry from './pages/ShowEntry'
 
 function App() {
   const [entries, setEntries] = useState([
-    { category: 'Movies', entry: 'Jurassic World was quite bad' }
+    { category: 'Movies', entry: 'Jurassic World was quite bad' },
+    { category: 'Movies', entry: 'Moonfall was far-fetched but still an entertaining film'},
+    { category: 'Games', entry: 'GTA San Andreas is still the GOAT'},
+    { category: 'Music', entry: 'The new Khruangbin album is LIT!!!'}
   ])
   
 
@@ -22,6 +25,13 @@ function App() {
     return <ShowEntry entry={entries[id]} />
   }
 
+  function addEntry(category, entry) {
+    const newEntry = { category, entry }
+    const id = entries.length
+    setEntries([...entries, newEntry])
+    return id
+  }
+
   return (
     <BrowserRouter>
       <Nav />
@@ -29,7 +39,7 @@ function App() {
         <Route path='/' element={<Home entries={entries} />} />
         <Route path='/category' element={<CategorySelection />} />
         <Route path='/entry/:id' element={<ShowEntryWrapper />} />
-        <Route path='/entry/new/:category' element={<NewEntry entries={entries} setEntries={setEntries} />} />
+        <Route path='/entry/new/:category' element={<NewEntry addEntry={addEntry} />} />
         <Route path='*' element={<h4>Page not found</h4>} />
       </Routes>
     </BrowserRouter>

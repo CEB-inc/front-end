@@ -1,8 +1,8 @@
 function ShowEntry({ entry }) {
   return entry ? (
     <>
-        <h5>{entry.entry}</h5>
-        <p>Posted in {entry.category}</p>
+      <h5>{entry.entry}</h5>
+      <p>Posted in {entry.category}</p>
     </>
   ) : (
     <p>Loading ...</p>

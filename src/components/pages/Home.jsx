@@ -1,19 +1,19 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 
-function Home({ entries }) {
+function Home({ posts }) {
   return (
     <section className='px-2'>
-      {entries.map((entry, index) => 
+      {posts.map((post, index) => 
       <div className='card'>
         <div className='p-2'>
-          {/* 'Blog' inside brackets to become entry.type (blog or review) */}
-          <h4>category: ({entry.category})</h4>
-          <p>title: {entry.title}</p>
-          <p>media: {entry.media}</p>
-          <p>body: {entry.body}</p>
-          <p>{entry.score === 0 ? '' : entry.score}</p>
-          <p className='fw-semibold'>Title: <Link to={`/entry/${index}`}>{entry.title}</Link></p>
+          {/* 'Blog' inside brackets to become post.type (blog or review) */}
+          <h4>category: ({post.category})</h4>
+          <p>title: {post.title}</p>
+          <p>media: {post.media}</p>
+          <p>body: {post.body}</p>
+          <p>{post.score === 0 ? '' : post.score}</p>
+          <p className='fw-semibold'>Title: <Link to={`/post/${index}`}>{post.title}</Link></p>
         </div>
       </div>)}
     </section>

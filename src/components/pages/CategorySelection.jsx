@@ -19,7 +19,7 @@ function CategorySelection() {
       <ul>
         {categories.map((cat, index) => (
           <li key={index}>
-            <Link to={`/entry/new/${cat}`}>{cat}</Link>
+            <Link to={`/post/new/${cat}`}>{cat}</Link>
           </li>
       ))}
       </ul>

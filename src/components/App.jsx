@@ -6,36 +6,36 @@ import Greeting from './Greeting'
 import Comment from './Comment'
 import Card from './Card'
 import CategorySelection from './pages/CategorySelection'
-import NewEntry from './pages/NewEntry'
-import ShowEntry from './pages/ShowEntry'
+import NewPost from './pages/NewPost'
+import ShowPost from './pages/ShowPost'
 
 
 function App() {
-  const [entries, setEntries] = useState([])
+  const [posts, setPosts] = useState([])
 
   useEffect(() => {
-      async function getEntries() {
+      async function getPosts() {
       const res = await fetch('http://localhost:4000/api/v1/posts')
-      setEntries(await res.json())
+      setPosts(await res.json())
     }
-    getEntries()
+    getPosts()
   }, [])
 
-  function ShowEntryWrapper() {
+  function ShowPostWrapper() {
     const { id } = useParams()
-    return <ShowEntry entry={entries.find((entry) => entry._id == id)} />
+    return <ShowPost post={posts.find((post) => post._id == id)} />
   }
   
 
   // higher order component
-  function ShowEntryWrapper() {
+  function ShowPostWrapper() {
     const { id } = useParams()
-    return <ShowEntry entry={entries[id]} />
+    return <ShowPost post={posts[id]} />
   }
 
-  async function addEntry(category, media, title, body, score) {
-    const newEntry = { category, media, title, body, score }
-    // second param of fetch is configuration. this is a fetch to post our new entry to our API
+  async function addPost(category, media, title, body, score) {
+    const newPost = { category, media, title, body, score }
+    // second param of fetch is configuration. this is a fetch to post our new post to our API
     const res = await fetch("http://localhost:4000/api/v1/posts", {
       method: 'post',
       headers: {
@@ -45,21 +45,21 @@ function App() {
         'Content-Type': 'application/json'
       },
       // providing the object that is being uploaded. we need to stringify it.
-      body: JSON.stringify(newEntry)
+      body: JSON.stringify(newPost)
     })
-    const returnedEntry = await res.json()
-    setPosts([...entries, returnedEntry])
-    return returnedEntry._id
+    const returnedPost = await res.json()
+    setPosts([...posts, returnedPost])
+    return returnedPost._id
   }
 
   return (
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path='/' element={<Home entries={entries} />} />
+        <Route path='/' element={<Home posts={posts} />} />
         <Route path='/category' element={<CategorySelection />} />
-        <Route path='/entry/:id' element={<ShowEntryWrapper />} />
-        <Route path='/entry/new/:category' element={<NewEntry addEntry={addEntry} />} />
+        <Route path='/post/:id' element={<ShowPostWrapper />} />
+        <Route path='/post/new/:category' element={<NewPost addPost={addPost} />} />
         <Route path='*' element={<h4>Page not found</h4>} />
       </Routes>
     </BrowserRouter>

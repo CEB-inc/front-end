@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import '../index.css'
+import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
 
 function Nav() {
 	return (
@@ -15,8 +16,8 @@ function Nav() {
 						<Link className="nav-link" to="/category">Create Post +</Link>
 					</div>
 					<div className="navbar-nav">
-						<Link className="nav-link active fw-semibold" to="">Login</Link>
-						<Link className="nav-link active fw-semibold" to="">Sign Up</Link>
+						<Link className="nav-link active fw-semibold" to="/login"> <FaSignInAlt /> Login</Link>
+						<Link className="nav-link active fw-semibold" to="/signup"> <FaUser /> Sign Up</Link>
 					</div>
 				</div>
 			</div>

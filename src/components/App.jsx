@@ -8,6 +8,9 @@ import Card from './Card'
 import CategorySelection from './pages/CategorySelection'
 import NewEntry from './pages/NewEntry'
 import ShowEntry from './pages/ShowEntry'
+import Dashboard from './pages/Dashboard'
+import Login from './pages/Login'
+import SignUp from './pages/SignUp'
 
 
 function App() {
@@ -34,16 +37,22 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path='/' element={<Home entries={entries} />} />
-        <Route path='/category' element={<CategorySelection />} />
-        <Route path='/entry/:id' element={<ShowEntryWrapper />} />
-        <Route path='/entry/new/:category' element={<NewEntry addEntry={addEntry} />} />
-        <Route path='*' element={<h4>Page not found</h4>} />
-      </Routes>
+        <Nav />
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/" element={<Home entries={entries} />} />
+          <Route path="/category" element={<CategorySelection />} />
+          <Route path="/entry/:id" element={<ShowEntryWrapper />} />
+          <Route
+            path="/entry/new/:category"
+            element={<NewEntry addEntry={addEntry} />}
+          />
+          <Route path="*" element={<h4>Page not found</h4>} />
+        </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App

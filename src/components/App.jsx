@@ -22,7 +22,7 @@ function App() {
   // higher order component
   function ShowPostWrapper() {
     const { id } = useParams()
-    return <ShowPost post={posts.find((post) => post._id == id)} />
+    return <ShowPost post={posts.find((post) => post._id == id)} setPosts={ setPosts } />
   }
 
   async function addPost(category, media, title, body, score) {

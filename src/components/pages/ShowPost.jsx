@@ -1,12 +1,15 @@
 import { useNavigate } from 'react-router-dom'
 
-function ShowPost({ post }) {
+function ShowPost({ post, setPosts }) {
   const nav = useNavigate()
 
   async function deletePost() {
     await fetch(`http://localhost:4000/api/v1/posts/${post._id}`, {
       method: "DELETE",
     })
+    // updating the array for 
+    const updated = await fetch("http://localhost:4000/api/v1/posts")
+    setPosts(await updated.json())
     nav('/')
   }
 

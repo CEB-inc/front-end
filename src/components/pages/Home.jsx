@@ -8,12 +8,12 @@ function Home({ entries }) {
       <div className='card'>
         <div className='p-2'>
           {/* 'Blog' inside brackets to become entry.type (blog or review) */}
-          <h4>{entry.category} (Blog)</h4>
-          <p>date_time_placeholder</p>
-          <p>username_placeholder</p>
-          {/* entry.entry link to be replaced with entry.title */}
-          <p className='fw-semibold'>Title: <Link to={`/entry/${index}`}>{entry.entry}</Link></p>
-          
+          <h4>category: ({entry.category})</h4>
+          <p>title: {entry.title}</p>
+          <p>media: {entry.media}</p>
+          <p>body: {entry.body}</p>
+          <p>{entry.score === 0 ? '' : entry.score}</p>
+          <p className='fw-semibold'>Title: <Link to={`/entry/${index}`}>{entry.title}</Link></p>
         </div>
       </div>)}
     </section>

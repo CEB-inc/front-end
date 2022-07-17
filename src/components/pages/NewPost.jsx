@@ -15,7 +15,6 @@ function NewPost({ addPost }) {
     e.preventDefault()
     const id = await addPost(category, media, title, body, score)
     nav(`/post/${id}`)
-    // setPosts({ ...posts, [e.target.name]: e.target.value })
   }
 
   return (

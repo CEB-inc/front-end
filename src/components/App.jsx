@@ -2,9 +2,6 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
 import Nav from './Nav'
 import Home from './pages/Home'
-import Greeting from './Greeting'
-import Comment from './Comment'
-import Card from './Card'
 import CategorySelection from './pages/CategorySelection'
 import NewPost from './pages/NewPost'
 import ShowPost from './pages/ShowPost'
@@ -21,16 +18,11 @@ function App() {
     getPosts()
   }, [])
 
-  function ShowPostWrapper() {
-    const { id } = useParams()
-    return <ShowPost post={posts.find((post) => post._id == id)} />
-  }
-  
 
   // higher order component
   function ShowPostWrapper() {
     const { id } = useParams()
-    return <ShowPost post={posts[id]} />
+    return <ShowPost post={posts.find((post) => post._id == id)} />
   }
 
   async function addPost(category, media, title, body, score) {

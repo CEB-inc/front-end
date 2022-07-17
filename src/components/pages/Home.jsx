@@ -4,16 +4,15 @@ import { Link } from 'react-router-dom'
 function Home({ posts }) {
   return (
     <section className='px-2'>
-      {posts.map((post, index) => 
+      {posts.map((post) => 
       <div className='card'>
         <div className='p-2'>
           {/* 'Blog' inside brackets to become post.type (blog or review) */}
           <h4>category: ({post.category})</h4>
-          <p>title: {post.title}</p>
+          <p className='fw-semibold'>Title: <Link to={`/post/${post._id}`}>{post.title}</Link></p>
           <p>media: {post.media}</p>
           <p>body: {post.body}</p>
           <p>{post.score === 0 ? '' : post.score}</p>
-          <p className='fw-semibold'>Title: <Link to={`/post/${index}`}>{post.title}</Link></p>
         </div>
       </div>)}
     </section>

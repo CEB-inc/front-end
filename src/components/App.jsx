@@ -1,58 +1,64 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
-import Nav from './Nav'
-import Home from './pages/Home'
-import Greeting from './Greeting'
-import Comment from './Comment'
-import Card from './Card'
-import CategorySelection from './pages/CategorySelection'
-import NewEntry from './pages/NewEntry'
-import ShowEntry from './pages/ShowEntry'
-import Dashboard from './pages/Dashboard'
-import Login from './pages/Login'
-import SignUp from './pages/SignUp'
-
+import { useState } from "react";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Nav from "./Nav";
+import Home from "./pages/Home";
+import Greeting from "./Greeting";
+import Comment from "./Comment";
+import Card from "./Card";
+import CategorySelection from "./pages/CategorySelection";
+import NewPost from "./pages/NewPost";
+import ShowPost from "./pages/ShowPost";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 function App() {
-  const [entries, setEntries] = useState([
-    { category: 'Movies', entry: 'Jurassic World was quite bad' },
-    { category: 'Movies', entry: 'Moonfall was far-fetched but still an entertaining film'},
-    { category: 'Games', entry: 'GTA San Andreas is still the GOAT'},
-    { category: 'Music', entry: 'The new Khruangbin album is LIT!!!'}
-  ])
-  
+  const [posts, setPosts] = useState([
+    { category: "Movies", post: "Jurassic World was quite bad" },
+    {
+      category: "Movies",
+      post: "Moonfall was far-fetched but still an entertaining film",
+    },
+    { category: "Games", post: "GTA San Andreas is still the GOAT" },
+    { category: "Music", post: "The new Khruangbin album is LIT!!!" },
+  ]);
 
   // higher order component
-  function ShowEntryWrapper() {
-    const { id } = useParams()
-    return <ShowEntry entry={entries[id]} />
+  function ShowPostWrapper() {
+    const { id } = useParams();
+    return <ShowPost post={posts[id]} />;
   }
 
-  function addEntry(category, entry) {
-    const newEntry = { category, entry }
-    const id = entries.length
-    setEntries([...entries, newEntry])
-    return id
+  function addPost(category, post) {
+    const newPost = { category, post };
+    const id = posts.length;
+    setPosts([...posts, newPost]);
+    return id;
   }
 
   return (
-    <BrowserRouter>
+    <>
+      <BrowserRouter>
         <Nav />
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/" element={<Home entries={entries} />} />
+          <Route path="/" element={<Home posts={posts} />} />
           <Route path="/category" element={<CategorySelection />} />
-          <Route path="/entry/:id" element={<ShowEntryWrapper />} />
+          <Route path="/post/:id" element={<ShowPostWrapper />} />
           <Route
-            path="/entry/new/:category"
-            element={<NewEntry addEntry={addEntry} />}
+            path="/post/new/:category"
+            element={<NewPost addPost={addPost} />}
           />
           <Route path="*" element={<h4>Page not found</h4>} />
         </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
+      <ToastContainer />
+    </>
   );
 }
 
-export default App
+export default App;

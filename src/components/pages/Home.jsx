@@ -1,26 +1,28 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-function Home({ entries }) {
+function Home({ posts }) {
   return (
-    <section className='px-2'>
-      {entries.map((entry, index) => 
-      <div className='card'>
-        <div className='p-2'>
-          {/* 'Blog' inside brackets to become entry.type (blog or review) */}
-          <h4>{entry.category} (Blog)</h4>
-          <p>date_time_placeholder</p>
-          <p>username_placeholder</p>
-          {/* entry.entry link to be replaced with entry.title */}
-          <p className='fw-semibold'>Title: <Link to={`/entry/${index}`}>{entry.entry}</Link></p>
-          
+    <section className="px-2">
+      {posts.map((post, index) => (
+        <div className="card">
+          <div className="p-2">
+            {/* 'Blog' inside brackets to become post.type (blog or review) */}
+            <h4>{post.category} (Blog)</h4>
+            <p>date_time_placeholder</p>
+            <p>username_placeholder</p>
+            {/* post.post link to be replaced with post.title */}
+            <p className="fw-semibold">
+              Title: <Link to={`/post/${index}`}>{post.post}</Link>
+            </p>
+          </div>
         </div>
-      </div>)}
+      ))}
     </section>
-  )
+  );
 }
 
-export default Home
+export default Home;
 
 /* <Greeting firstName='UserName'/>
 

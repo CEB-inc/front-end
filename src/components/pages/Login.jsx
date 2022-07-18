@@ -57,7 +57,7 @@ function Login() {
           <h1>
             <FaSignInAlt /> Login
           </h1>
-          <p>Login and Be a Cunt</p>
+          <p>Login and join the community</p>
         </section>
 
         <section className="form">

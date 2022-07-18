@@ -1,22 +1,21 @@
-import { Link, useNavigate } from 'react-router-dom'
-import '../index.css'
-import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
-import { useSelector, useDispatch } from 'react-redux'
-import { logout, reset } from '../components/features/auth/authSlice'
+import { Link, useNavigate } from "react-router-dom";
+import "../index.css";
+import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, reset } from "../components/features/auth/authSlice";
 
 function Nav() {
-	const navigate = useNavigate()
-	const dispatch = useDispatch()
-	const { user } = useSelector((state) => state.auth)
-	
-	const onLogout = () => {
-		dispatch(logout())
-		dispatch(reset())
-		navigate('/')
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
-	}
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
 
-	return (
+  return (
     <>
       <nav
         id="navbar"
@@ -43,6 +42,7 @@ function Nav() {
                 Create Post +
               </Link>
             </div>
+            <div className="navbar-nav me-4"> Welcome, {user && user.name} </div>
             <div className="navbar-nav">
               {user ? (
                 <button className="btn" onClick={onLogout}>
@@ -68,4 +68,4 @@ function Nav() {
   );
 }
 
-export default Nav
+export default Nav;

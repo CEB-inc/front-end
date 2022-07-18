@@ -10,7 +10,6 @@ import Card from "./Card";
 import CategorySelection from "./pages/CategorySelection";
 import NewPost from "./pages/NewPost";
 import ShowPost from "./pages/ShowPost";
-import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 
@@ -43,7 +42,6 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/" element={<Home posts={posts} />} />

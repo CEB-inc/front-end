@@ -1,14 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { createPost, getPosts, reset } from "../features/posts/postSlice";
 import "/src/index.css";
 
 function NewPost({ addPost }) {
   const { category } = useParams();
   const [post, setPost] = useState("");
   const nav = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  const { posts, isLoading, isError, message } = useSelector(
+    (state) => state.posts
+  );
+
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    }
+
+    if (!user) {
+      nav("/login");
+    }
+    dispatch(getPosts());
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, nav, isError, message, dispatch]);
 
   function submit(e) {
     e.preventDefault();
+    dispatch(createPost({ post }));
+    setPost("");
+
     const id = addPost(category, post);
     nav(`/post/${id}`);
   }

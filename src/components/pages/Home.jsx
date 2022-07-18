@@ -1,21 +1,11 @@
-import React from "react";
-import { Link } from 'react-router-dom'
+import React from 'react';
+import PostList from '../PostList'
 
-function Home({ posts }) {
+function Home() {
   return (
-    <section className='px-2'>
-      {posts.map((post) => 
-      <div className='card'>
-        <div className='p-2'>
-          {/* 'Blog' inside brackets to become post.type (blog or review) */}
-          <h4>category: ({post.category})</h4>
-          <p className='fw-semibold'>Title: <Link to={`/post/${post._id}`}>{post.title}</Link></p>
-          <p>media: {post.media}</p>
-          <p>body: {post.body}</p>
-          <p>{post.score === 0 ? '' : post.score}</p>
-        </div>
-      </div>)}
-    </section>
+    <>
+      <PostList />
+    </>
   )
 }
 

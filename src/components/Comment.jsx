@@ -1,4 +1,4 @@
-const Comment = ({ userName, date, children }) => { 
+const Comment = ({ userName, date, children }) => {
 	return (
 		<article className="comment">
 			<header>

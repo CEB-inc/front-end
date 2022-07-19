@@ -11,6 +11,8 @@ function reducer(state, action) {
         posts: action.data,
       };
     case "addPost":
+      console.log("state!", state);
+      console.log("action!", action);
       return {
         ...state,
         // this is setting what goes into posts array within initialState object. plus adding the extra.

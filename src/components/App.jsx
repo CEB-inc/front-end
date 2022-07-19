@@ -20,6 +20,8 @@ function App() {
   // destructuring posts out of store for useReducer. so no need to: store.posts
   const { posts } = store
 
+  console.log("posts", posts)
+
   useEffect(() => {
       async function getPosts() {
       const res = await fetch('http://localhost:4000/api/v1/posts')
@@ -33,10 +35,10 @@ function App() {
 
 
   // higher order component
-  function ShowPostWrapper() {
-    const { id } = useParams()
-    return <ShowPost post={posts.find((post) => post._id == id)} />
-  }
+  // function ShowPostWrapper() {
+    
+  //   return 
+  // }
 
   async function addPost(category, media, title, body, score) {
     const newPost = { category, media, title, body, score }
@@ -60,6 +62,7 @@ function App() {
     return returnedPost._id
   }
 
+
   // StoreContext is in store.js, the .Provider is providing ALL children with a value
   return (
     <StoreContext.Provider value={{ store, dispatch }}>
@@ -70,8 +73,8 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path='/' element={<Home />} />
           <Route path='/category' element={<CategorySelection />} />
-          <Route path='/post/:id' element={<ShowPostWrapper />} />
-          <Route path='/post/new/:category' element={<NewPost addPost={addPost} />} />
+          <Route path='/post/:id' element={<ShowPost />} />
+          <Route path='/post/new/:category' element={<NewPost />} />
           <Route path='*' element={<h4>Page not found</h4>} />
         </Routes>
       </BrowserRouter>

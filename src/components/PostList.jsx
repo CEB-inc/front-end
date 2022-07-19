@@ -13,7 +13,7 @@ function PostList() {
     return posts ? (
         <ul className='px-2'>
             {posts.map((post) => (
-                <PostListItem post={post} />
+                <PostListItem key={post._id} post={post} />
             ))}
         </ul>
     ) :(

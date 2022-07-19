@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Nav from './Nav'
 import Home from './pages/Home'
 import CategorySelection from './pages/CategorySelection'
@@ -7,6 +9,8 @@ import NewPost from './pages/NewPost'
 import ShowPost from './pages/ShowPost'
 import StoreContext from '../store'
 import useStore from '../reducer'
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 
 
@@ -62,6 +66,8 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path='/' element={<Home />} />
           <Route path='/category' element={<CategorySelection />} />
           <Route path='/post/:id' element={<ShowPostWrapper />} />
@@ -69,8 +75,9 @@ function App() {
           <Route path='*' element={<h4>Page not found</h4>} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </StoreContext.Provider>
   )
 }
 
-export default App
+export default App;

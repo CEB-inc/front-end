@@ -24,7 +24,7 @@ function CategorySelection() {
       ))}
       </ul>
     </>
-  )
+  );
 }
 
-export default CategorySelection
+export default CategorySelection;

@@ -1,33 +1,20 @@
-// import { useNavigate } from 'react-router-dom'
-import { useContext, useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { deletePost } from "../features/posts/postSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { deletePost, updatePost } from "../features/posts/postSlice";
 import { useParams, useNavigate } from "react-router-dom";
-import StoreContext from "../../store";
-import axios from 'axios'
+import usePostContext from "../../usePostContext";
 
 function ShowPost() {
-  // const { id } = useParams();
-  // const {
-  //   store: { posts },
-  // } = useContext(StoreContext);
-  // const post = posts.find((post) => post._id === id);
-  // console.log("post", post);
-  // // const nav = useNavigate()
+  const { id } = useParams();
+
+  const { store, dispatch } = usePostContext();
+
+  const post = [...store.posts].find((post) => post._id === id) || null;
+
   const dispatchAuth = useDispatch();
   const nav = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+  const currentUserId = user._id;
 
-
-   const [post, setPost] = useState(null);
-   const { id } = useParams();
-
-   useEffect(() => {
-     async function getPost() {
-       const x = await axios(`http://localhost:4000/api/v1/posts/${id}`);
-       setPost(x.data);
-     }
-     getPost();
-   }, []);
   return post ? (
     <>
       <h5 className="title is-1">{post.media}</h5>
@@ -36,10 +23,31 @@ function ShowPost() {
       {post.score ? <h5 className="title is-1">score: {post.score}</h5> : ""}
       <p>Posted in {post.category}</p>
       <div>Time Posted: {new Date(post.createdAt).toLocaleString("en-AU")}</div>
-      <button onClick={() => {
-        dispatchAuth(deletePost(post._id));
-        nav('/')
-      }}>delete</button>
+
+      <div>
+        {currentUserId === post.user && (
+          <div>
+            <button
+              onClick={() => {
+                dispatchAuth(deletePost(post._id));
+                dispatch({ type: "deletePost", payload: post._id });
+                nav("/");
+              }}
+            >
+              Delete
+            </button>
+            <button
+              onClick={() => {
+                dispatchAuth(updatePost(post._id));
+                dispatch({ type: "updatePost", payload: post._id });
+                nav(`/post/edit/${post._id}`);
+              }}
+            >
+              Edit
+            </button>
+          </div>
+        )}
+      </div>
     </>
   ) : (
     <p>Loading ...</p>

@@ -28,6 +28,21 @@ const getPosts = async (token) => {
   return response.data;
 };
 
+// Update post
+const updatePost = async (postId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  // Gathers api url and post id
+  const updateURL = `${API_URL}/${postId}`;
+  const response = await axios.put(updateURL, config);
+
+  return response.data;
+};
+
 // Delete post
 const deletePost = async (postId, token) => {
   const config = {
@@ -46,6 +61,7 @@ const deletePost = async (postId, token) => {
 const postService = {
   createPost,
   getPosts,
+  updatePost,
   deletePost,
 };
 

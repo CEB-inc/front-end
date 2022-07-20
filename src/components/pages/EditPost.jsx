@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { createPost } from "../features/posts/postSlice";
+import { updatePost } from "../features/posts/postSlice";
 import usePostContext from "../../usePostContext";
 import "/src/index.css";
 
-function NewPost() {
+function EditPost() {
   const { dispatch: postDispatch } = usePostContext();
   const { category } = useParams();
-  const [media, setMedia] = useState("");
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const [score, setScore] = useState("");
+  const [media, setMedia] = useState();
+  const [title, setTitle] = useState();
+  const [body, setBody] = useState();
+  const [score, setScore] = useState();
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
@@ -38,12 +38,12 @@ function NewPost() {
     e.preventDefault();
 
     const { payload } = await dispatch(
-      createPost({ user, category, media, title, body, score })
+      updatePost({ user, category, media, title, body, score })
     );
 
     const postId = payload._id;
 
-    postDispatch({ type: "addPost", payload });
+    postDispatch({ type: "updatePost", payload });
 
     // Implement code below into update post form
     // postDispatch({ type: "updatePost", payload });
@@ -53,7 +53,7 @@ function NewPost() {
 
   return (
     <>
-      <h2 className="title is-2 my-4">New Post in {category}</h2>
+      <h2 className="title is-2 my-4">Edit Post {category}</h2>
       <form className="container" onSubmit={submit}>
         <div className="control mb-3">
           <div className="select">
@@ -93,10 +93,10 @@ function NewPost() {
         ) : (
           ""
         )}
-        <button className="button is-info is-outlined">Create Post</button>
+        <button className="button is-info is-outlined">Update Post</button>
       </form>
     </>
   );
 }
 
-export default NewPost;
+export default EditPost;

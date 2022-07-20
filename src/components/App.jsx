@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom'
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 import Nav from './Nav'
 import Home from './pages/Home'
 import CategorySelection from './pages/CategorySelection'
@@ -40,27 +40,27 @@ function App() {
   //   return 
   // }
 
-  async function addPost(category, media, title, body, score) {
-    const newPost = { category, media, title, body, score }
-    // second param of fetch is configuration. this is a fetch to post our new post to our API
-    const res = await fetch("http://localhost:4000/api/v1/posts", {
-      method: 'post',
-      headers: {
-        // telling the server we expect to get json back
-        'Accept': 'application/json',
-        // outgoing header. what we're sending is going to be json
-        'Content-Type': 'application/json'
-      },
-      // providing the object that is being uploaded. we need to stringify it.
-      body: JSON.stringify(newPost)
-    })
-    const returnedPost = await res.json()
-    dispatch({
-      type: 'addPost',
-      data: returnedPost
-    })
-    return returnedPost._id
-  }
+  // async function addPost(category, media, title, body, score) {
+  //   const newPost = { category, media, title, body, score }
+  //   // second param of fetch is configuration. this is a fetch to post our new post to our API
+  //   const res = await fetch("http://localhost:4000/api/v1/posts", {
+  //     method: 'post',
+  //     headers: {
+  //       // telling the server we expect to get json back
+  //       'Accept': 'application/json',
+  //       // outgoing header. what we're sending is going to be json
+  //       'Content-Type': 'application/json'
+  //     },
+  //     // providing the object that is being uploaded. we need to stringify it.
+  //     body: JSON.stringify(newPost)
+  //   })
+  //   const returnedPost = await res.json()
+  //   dispatch({
+  //     type: 'addPost',
+  //     data: returnedPost
+  //   })
+  //   return returnedPost._id
+  // }
 
 
   // StoreContext is in store.js, the .Provider is providing ALL children with a value

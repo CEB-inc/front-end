@@ -36,7 +36,9 @@ const deletePost = async (postId, token) => {
     },
   };
 
-  const response = await axios.delete(API_URL, + postId, config);
+  // Gathers api url and post id
+  const deleteURL = `${API_URL}/${postId}`;
+  const response = await axios.delete(deleteURL, config);
 
   return response.data;
 };

@@ -6,7 +6,7 @@ import useStore from "../../reducer"
 import "/src/index.css";
     
 
-function NewPost({ addPost }) {
+function NewPost() {
   const { category } = useParams();
   const [media, setMedia] = useState("")
   const [title, setTitle] = useState("")
@@ -21,40 +21,32 @@ function NewPost({ addPost }) {
   // useNavigate lets us force the user to a path
   const nav = useNavigate()
 
-  
+  // Checks to see if a user is logged in
+  // If no user, redirects to login
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      console.error(message);
     }
     
     if (!user) {
       nav("/login");
     }
     dispatch(getPosts());
-    
-    return () => {
-      dispatch(reset());
-    };
   }, [user, nav, isError, message, dispatch]);
   
   // What happens on submit. the press of the button.
   async function submit(e) {
     e.preventDefault()
     
-    // dispatch(createPost({ user, category, media, title, body, score }));
+    const { payload } = await dispatch(createPost({ user, category, media, title, body, score }));
+    const postId = payload._id;
     setMedia("")
     setTitle("")
     setBody("")
     setScore("");
     
-    const { payload } = await dispatch(createPost({ user, category, media, title, body, score }));
-    const postId = payload._id; 
-    // console.log(id)
-    postDispatch({
-      type: 'addPost',
-      data: payload
-    });
     nav(`/post/${postId}`)
+  
   }
 
   return (

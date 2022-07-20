@@ -17,7 +17,7 @@ export const createPost = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.user.token;
       console.log("token", token);
-      return await postService.createPost(postData, token);
+      return postService.createPost(postData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -36,7 +36,7 @@ export const getPosts = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await postService.getPosts(token);
+      return postService.getPosts(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -55,7 +55,7 @@ export const deletePost = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await postService.deletePost(id, token);
+      return postService.deletePost(id, token);
     } catch (error) {
       const message =
         (error.response &&

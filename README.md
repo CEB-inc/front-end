@@ -31,20 +31,16 @@ Back-end:   https://github.com/CEB-inc/back-end
 
 ### R3 - Employ and utilise proper source control methodology (git)
 
-Two repos were created within a private organisation (CEB-inc) between Corey, Ethan and Brian. One repo was designated to front-end, and a second repo for back-end.
+Two repos were created within a private organisation (CEB-inc) between Corey, Ethan and Brian. One repo was designated to front-end, and a second repo for back-end. Application features were assigned to separate branches, where they were developed, intermittently pushed to the remote branch, and eventually merged to the main upon completion of each feature. Our team underwent merges as a group, through live screensharing audio conferences on Discord. This made it more practical to assess merging conflicts, and to determine which versions of code were bug-free and/or best suited to the application.  
 
-Front-end branches:
-- Main
-- auth-branch
-- connection-branch
-- edit-function
-- readme-branch
-- testing-branch
+#### The private GitHub organisation (CEB-inc) used for our group
+![CEB inc corporation on github](docs2/cebgithub.png)
 
-Back-end branches:
-- Main
-- feature-branch
-- testing-branch
+#### A view of the front-end repository within our organisation
+![front-end repo](docs2/frontrepo.png)
+
+#### A portion of our branch activity and merge history
+![merge and pull requests](docs2/merges.png)
 
 ---
 
@@ -64,17 +60,50 @@ Initially, our team had delegated the project as:
 - Corey and Brian: working on back-end
 - Ethan: working on front-end
 
-Following the conclusion of the first week, the back-end was close to being complete and the front and back end had been connected. Our delegation of roles shifted from a front-end/back-end split, to a feature-based task allocation. Team members would create seperate git branches within our repository, where features of the application would be developed. When a team member required assistance, another member would clone the git branch to assess, modify and enhance code. Discussion/explanation for the changes made took place in Discord throughout this process.  
+Following the conclusion of the first week, the back-end was close to being complete and the front and back end had been connected. Our delegation of roles shifted from a front-end/back-end split, to a feature-based task allocation. Team members would create seperate git branches within our repository, where features of the application would be developed. When a team member required assistance, another member would clone the git branch to assess, modify and enhance code. Discussion/explanation for the changes made took place in Discord throughout this process.
+
+#### Essential Jobs, Superfluous and In Progress, Trello board
+![1/2 of trello board](docs2/trello1.png)
+
+#### Needs Assistance, Completed and Assignment details, Trello board
+![2/2 of trello board](docs2/trello2.png)
+
+#### An example of the task/objective checklists inside of our Trello cards
+![contents of a card](docs2/trellocard.png)
+
+#### The team Discord chat was used for asking questions and sharing code
+![discord 1](docs2/discord1.png)
+
+#### It was also used for discussing progress, planning progress, and troubleshooting
+![discord 2](docs2/discord2.png)
+
+#### We took part in several zoom conferences, where screen sharing and screen control allowed for effective collaboration towards our application's development 
+![vscode liveshare](docs2/vslive.png)
 
 ---
 
 R9 Provide evidence of user testing:
-- In the development environment
-- In the production environment
+
+For the user-testing of our application in development, an excel chart was constructed: outlining the user's role (authorisations), a description of each test, detailed operational steps required for each test, the expected functional result, and a section for describing the test-results by the test-subject (user). User-testing
+was undertaken on three occassions throughout the application's development. On the first assessment, not all of the features had been implemented. On second assessment, all features were present (besides the edit/update function), however several bugs still existed and required troubleshooting to achieve intended functionality. Our final user-test assessment occurred following the completion of our app's development, and prior to deployment in production state. 
+
+The images below demonstrate our process for user-testing in development
+
+![user testing excel 1](docs2/usertest1.png)
+
+![user testing excel 2](docs2/usertest2.png)
+
+![user testing excel 3](docs2/usertest3.png)
+
+The images below demonstrate our process for user-testing in production
+
+![user testing production 1](docs2/prodtest1.png)
+![user testing production 2](docs2/prodtest2.png)
 
 ---
 
 ### R12 - The contents of our README.md, as submitted for Full Stack App PART A
+
 ---
 ## T3A2 Full Stack App - Part A
 

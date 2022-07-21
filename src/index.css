@@ -132,7 +132,7 @@ h3 {
   margin-bottom: 20px;
 }
 
-
+/* PHONE SCREEN */
 @media (max-width: 600px) {
   .form {
     width: 90%;
@@ -147,6 +147,7 @@ h3 {
   }
 }
 
+/* TABLET SCREEN? */
 @media only screen and (max-width: 939px) {
   .form {
     width: 90%;
@@ -172,13 +173,11 @@ h3 {
     width: 90%;
   }
   .CatText {
-    font-family: 'Koulen', cursive;
-    font-size: 35vw;
-    padding-right: 25px;
-    margin: -20px;
+    font-size: 25vw;
   }
 }
 
+/* MONITOR */
 @media only screen and (min-width: 940px) {
   .ListContainer {
     display: flex;
@@ -192,19 +191,10 @@ h3 {
     width: 45%;
   }
   .CatText {
-    font-family: 'Koulen', cursive;
-    font-size: 30vw;
-    margin: -50px;
+    font-size: 15vw;
   }
 }
 
-@media only screen and (min-width: 1076px) {
-  .CatText {
-    font-family: 'Koulen', cursive;
-    font-size: 20vw;
-    margin: -100px;
-  }
-}
 
 /* ---------- HOME SCREEN ------- */
 .Header {
@@ -221,4 +211,16 @@ h3 {
 /*------- SHOW POST ----------*/
 .PostBody {
   white-space: pre-wrap;
+}
+
+/*---------- CATEGORY SCREEN -------*/
+.CatText {
+  font-family: 'Koulen', cursive;
+  margin-right: 25px;
+  color: #212121;
+  text-decoration: none;
+  margin-bottom: -25px;
+}
+.CatText:hover {
+  text-decoration: underline;
 }

@@ -16,13 +16,11 @@ function CategorySelection() {
   return (
     <>
       <div>
-        <h3 className="mt-5 mb-0 d-flex justify-content-center">Choose a category</h3>
+        <h3 className="mt-4 mb-0 d-flex justify-content-center">Choose a category</h3>
         <ul>
           {categories.map((cat, index) => (
-            <li key={index} className="LinkItem d-flex justify-content-center">
-              <Link to={`/post/new/${cat}`} className="LinkItem text-body">
-                <p className="CatText text-body">{cat}</p>
-              </Link>
+            <li key={index} className="mt-0 d-flex justify-content-center">
+              <Link to={`/post/new/${cat}`} className="CatText">{cat}</Link>
             </li>
         ))}
         </ul>

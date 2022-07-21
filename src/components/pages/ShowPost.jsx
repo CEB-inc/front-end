@@ -9,7 +9,7 @@ function ShowPost() {
   const { store, dispatch } = usePostContext();
 
   const post = [...store.posts].find((post) => post._id === id) || null;
-
+  
   const dispatchAuth = useDispatch();
   const nav = useNavigate();
   const { user } = useSelector((state) => state.auth);
@@ -17,12 +17,12 @@ function ShowPost() {
 
   return post ? (
     <>
-      <h5 className="title is-1">{post.media}</h5>
-      <h5 className="title is-1">Title: {post.title}</h5>
-      <h5 className="title is-1">{post.body}</h5>
-      {post.score ? <h5 className="title is-1">score: {post.score}</h5> : ""}
-      <p>Posted in {post.category}</p>
+      <h4 className="d-flex justify-content-center"><strong>{post.title}</strong></h4>
+      <h5 className="d-flex justify-content-center">A {post.category} in {post.media}</h5>
+      <p className="m-4 PostBody">{post.body}</p>
+      {post.score ? <h5 className="PostScore">score: {post.score}/10</h5> : ""}
       <div>Time Posted: {new Date(post.createdAt).toLocaleString("en-AU")}</div>
+      <h5>created by: {post.name}</h5>
 
       <div>
         {currentUserId === post.user && (

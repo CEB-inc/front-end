@@ -10,7 +10,7 @@ function PostList() {
   } = usePostContext();
 
   return posts ? (
-    <ul className="px-2">
+    <ul className="ListContainer">
       {posts.map((post) => (
         <PostListItem key={post._id} post={post} />
       ))}

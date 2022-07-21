@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -143,3 +146,39 @@ h3 {
   }
 }
 
+
+
+
+/* ---------- HOME SCREEN ------- */
+.Header {
+  text-align: center;
+}
+
+.ListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/*--------- list items ---------*/
+.card {
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  width: 45%;
+  background-color: lightblue;
+  border: 2px #66b2b2 solid;
+}
+
+/*--------- CATEGORY SELECT SCREEN -----------*/
+.catList {
+}
+.catListItem {
+}
+
+/*------- SHOW POST ----------*/
+
+.PostBody {
+  white-space: pre-wrap;
+}
+
+/*------- NEW POST -------------*/

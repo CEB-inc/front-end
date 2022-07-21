@@ -149,16 +149,16 @@ h3 {
 
 @media only screen and (max-width: 939px) {
   .form {
-      width: 90%;
-    }
+    width: 90%;
+  }
   
-    .heading h1 {
-      font-size: 2rem;
-    }
+  .heading h1 {
+    font-size: 2rem;
+  }
   
-    .heading p {
-      font-size: 1.5rem;
-    }
+  .heading p {
+    font-size: 1.5rem;
+  }
 
   .ListContainer {
     display: flex;
@@ -170,6 +170,12 @@ h3 {
     margin-bottom: 1rem;
     margin-right: 1rem;
     width: 90%;
+  }
+  .CatText {
+    font-family: 'Koulen', cursive;
+    font-size: 35vw;
+    padding-right: 25px;
+    margin: -20px;
   }
 }
 
@@ -184,6 +190,19 @@ h3 {
     margin-bottom: 1rem;
     margin-right: 1rem;
     width: 45%;
+  }
+  .CatText {
+    font-family: 'Koulen', cursive;
+    font-size: 30vw;
+    margin: -50px;
+  }
+}
+
+@media only screen and (min-width: 1076px) {
+  .CatText {
+    font-family: 'Koulen', cursive;
+    font-size: 20vw;
+    margin: -100px;
   }
 }
 
@@ -202,10 +221,4 @@ h3 {
 /*------- SHOW POST ----------*/
 .PostBody {
   white-space: pre-wrap;
-}
-
-/*------- SHOW CATEGORY ------------*/
-.CatText{
-  font-family: 'Koulen', cursive;
-  font-size: 30vw;
 }

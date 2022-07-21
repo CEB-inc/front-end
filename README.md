@@ -83,8 +83,11 @@ Following the conclusion of the first week, the back-end was close to being comp
 ---
 
 R9 Provide evidence of user testing:
-- In the development environment
-- In the production environment
+
+For the user-testing of our application in development, an excel chart was constructed: outlining the user's role (authorisations), a description of each test, detailed operational steps required for each test, the expected functional result, and a section for describing the test-results by the test-subject (user). User-testing
+was undertaken on three occassions throughout the application's development. On the first assessment, not all of the features had been implemented. On second assessment, all features were present (besides the edit/update function), however several bugs still existed and required troubleshooting to achieve intended functionality. Our final user-test assessment occurred following the completion of our app's development, and prior to deployment in production state. 
+
+The images below demonstrate our process for user-testing in development
 
 ![user testing excel 1](docs2/usertest1.png)
 
@@ -95,6 +98,7 @@ R9 Provide evidence of user testing:
 ---
 
 ### R12 - The contents of our README.md, as submitted for Full Stack App PART A
+
 ---
 ## T3A2 Full Stack App - Part A
 

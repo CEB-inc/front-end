@@ -6,7 +6,7 @@ import usePostContext from "../../usePostContext";
 import "/src/index.css";
 
 function EditPost() {
-  const { store, dispatch: postDispatch } = usePostContext();
+  const { store, dispatch: { postDispatch } } = usePostContext();
 
   const { id } = useParams();
   const post = [...store.posts].find((post) => post._id === id) || null;
@@ -36,7 +36,7 @@ function EditPost() {
 
   // a for loop for score selection 1-10
   const scoreOptions = [<option key={0}>Rating:</option>]
-  for (let i = 0; i <= 10; i++) {
+  for (let i = 1; i <= 10; i++) {
     scoreOptions.push(<option key={i}>{i}</option>)
   }
 

@@ -37,15 +37,15 @@ function Nav() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav me-auto">
-              <Link className="nav-link" to="/category">
+            <div className="navbar-nav me-auto"> {user ? (<Link className="nav-link" to="/category">
                 Create Post +
-              </Link>
+              </Link>) : (" ")}
+              
             </div>
-            <div className="navbar-nav me-4"> Welcome, {user && user.name} </div>
+            <div className="navbar-nav me-4"> Welcome {user && user.name} </div>
             <div className="navbar-nav">
               {user ? (
-                <button className="btn" onClick={onLogout}>
+                <button className="btn btn-secondary" onClick={onLogout}>
                   <FaSignOutAlt /> Logout
                 </button>
               ) : (

@@ -1,40 +1,55 @@
-import { useNavigate } from 'react-router-dom'
-import { useContext } from 'react'
-import { useDispatch } from "react-redux";
-import { deletePost } from "../features/posts/postSlice";
-import StoreContext from '../../store'
+import { useDispatch, useSelector } from "react-redux";
+import { deletePost, updatePost } from "../features/posts/postSlice";
+import { useParams, useNavigate } from "react-router-dom";
+import usePostContext from "../../usePostContext";
 
-function ShowPost({ post }) {
-  const { dispatch } = useContext(StoreContext)
-  const nav = useNavigate()
-  const dispatchAuth = useDispatch();
+function ShowPost() {
+  const { id } = useParams();
 
-  // this is old code from merge. AWAITING LIVE TEST
-  // async function deletePost() {
-  //   await fetch(`http://localhost:4000/api/v1/posts/${post._id}`, {
-  //     method: "DELETE",
-  //   })
-  //   // updating the useState/setPosts array from App.jsx
-  //   const updated = await fetch("http://localhost:4000/api/v1/posts")
-  //   dispatch({
-  //     type: 'setPosts',
-  //     data: await updated.json()
-  //   })
-  //   nav('/')
-  // }
+  const { store, dispatch } = usePostContext();
+
+  const post = [...store.posts].find((post) => post._id === id) || null;
   
+  const dispatchAuth = useDispatch();
+  const nav = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+  const currentUserId = user._id;
+
   return post ? (
     <>
-      <h5 className="title is-1">media cat:{post.media}</h5>
-      <h5 className="title is-1">title: {post.title}</h5>
-      <h5 className="title is-1">body: {post.body}</h5>
-      { post.score === !null ? <h5 className="title is-1">score: {post.score}</h5> : '' }
-      <p>Posted in {post.category}</p>
-      <button onClick={dispatchAuth(deletePost(post._id))}>delete</button>
+      <h4 className="d-flex justify-content-center"><strong>{post.title}</strong></h4>
+      <h5 className="d-flex justify-content-center">A {post.category} in {post.media}</h5>
+      <p className="m-4 d-flex justify-content-center PostBody">{post.body}</p>
+      {post.score ? <h5 className="d-flex justify-content-center">score: {post.score}/10</h5> : ""}
+      <div className="d-flex justify-content-center">Time Posted: {new Date(post.createdAt).toLocaleString("en-AU")}</div>
+      <h5 className="d-flex justify-content-center">created by: {post.name}</h5>
+
+      <div className="d-flex justify-content-center">
+        {currentUserId === post.user && (
+          <div className="d-flex">
+            <button type="button" className="btn btn-danger m-1"
+              onClick={() => {
+                dispatchAuth(deletePost(post._id));
+                dispatch({ type: "deletePost", payload: post._id });
+                nav("/");
+              }}
+            >
+              Delete
+            </button>
+            <button type="button" className="btn btn-warning m-1"
+              onClick={() => {
+                nav(`/post/${post._id}/edit`);
+              }}
+            >
+              Edit
+            </button>
+          </div>
+        )}
+      </div>
     </>
   ) : (
-      <p>Loading ...</p>
-  )
+    <p>Loading ...</p>
+  );
 }
 
 export default ShowPost;

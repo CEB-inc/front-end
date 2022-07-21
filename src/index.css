@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -128,7 +132,7 @@ h3 {
   margin-bottom: 20px;
 }
 
-
+/* PHONE SCREEN */
 @media (max-width: 600px) {
   .form {
     width: 90%;
@@ -143,3 +147,80 @@ h3 {
   }
 }
 
+/* TABLET SCREEN? */
+@media only screen and (max-width: 939px) {
+  .form {
+    width: 90%;
+  }
+  
+  .heading h1 {
+    font-size: 2rem;
+  }
+  
+  .heading p {
+    font-size: 1.5rem;
+  }
+
+  .ListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    width: 90%;
+  }
+  .CatText {
+    font-size: 25vw;
+  }
+}
+
+/* MONITOR */
+@media only screen and (min-width: 940px) {
+  .ListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    width: 45%;
+  }
+  .CatText {
+    font-size: 15vw;
+  }
+}
+
+
+/* ---------- HOME SCREEN ------- */
+.Header {
+  text-align: center;
+}
+.LinkItem {
+  text-decoration: none;
+  list-style-type: none;
+}
+.LinkItem:hover {
+  text-decoration: underline;
+}
+
+/*------- SHOW POST ----------*/
+.PostBody {
+  white-space: pre-wrap;
+}
+
+/*---------- CATEGORY SCREEN -------*/
+.CatText {
+  font-family: 'Koulen', cursive;
+  margin-right: 25px;
+  color: #212121;
+  text-decoration: none;
+  margin-bottom: -25px;
+}
+.CatText:hover {
+  text-decoration: underline;
+}

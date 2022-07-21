@@ -15,7 +15,6 @@ export const createPost = createAsyncThunk(
   async (postData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      console.log("token", token);
       return postService.createPost(postData, token);
     } catch (error) {
       const message =
@@ -51,10 +50,10 @@ export const getPosts = createAsyncThunk(
 // Update post
 export const updatePost = createAsyncThunk(
   "posts/update",
-  async (id, thunkAPI) => {
+  async (updateData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return postService.updatePost(id, token);
+      return postService.updatePost(updateData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -148,7 +147,7 @@ export const postSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       });
-},
+  },
 });
 
 export const { reset } = postSlice.actions;

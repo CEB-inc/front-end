@@ -29,7 +29,7 @@ const getPosts = async (token) => {
 };
 
 // Update post
-const updatePost = async (postId, token) => {
+const updatePost = async (updateData, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -37,8 +37,8 @@ const updatePost = async (postId, token) => {
   };
 
   // Gathers api url and post id
-  const updateURL = `${API_URL}/${postId}`;
-  const response = await axios.put(updateURL, config);
+  const updateURL = `${API_URL}/${updateData._id}`;
+  const response = await axios.put(updateURL, updateData, config);
 
   return response.data;
 };

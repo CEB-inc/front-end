@@ -33,17 +33,18 @@ function ShowPost() {
 
   return post ? (
     <>
-      {userData && <h4>{userData.name}</h4>}
-      <h5 className="title is-1">{post.media}</h5>
-      <h5 className="title is-1">Title: {post.title}</h5>
-      <h5 className="title is-1">{post.body}</h5>
-      {post.score ? <h5 className="title is-1">score: {post.score}</h5> : ""}
-      <p>Posted in {post.category}</p>
-      <div>Time Posted: {new Date(post.createdAt).toLocaleString("en-AU")}</div>
-      <div>
+       {userData && <h4>{userData.name}</h4>}
+      <h4 className="d-flex justify-content-center"><strong>{post.title}</strong></h4>
+      <h5 className="d-flex justify-content-center">A {post.category} in {post.media}</h5>
+      <p className="m-4 d-flex justify-content-center PostBody">{post.body}</p>
+      {post.score ? <h5 className="d-flex justify-content-center">score: {post.score}/10</h5> : ""}
+      <div className="d-flex justify-content-center">Time Posted: {new Date(post.createdAt).toLocaleString("en-AU")}</div>
+      <h5 className="d-flex justify-content-center">created by: {post.name}</h5>
+
+      <div className="d-flex justify-content-center">
         {currentUserId === post.user && (
-          <div>
-            <button
+          <div className="d-flex">
+            <button type="button" className="btn btn-danger m-1"
               onClick={() => {
                 dispatchAuth(deletePost(post._id));
                 dispatch({ type: "deletePost", payload: post._id });
@@ -52,7 +53,7 @@ function ShowPost() {
             >
               Delete
             </button>
-            <button
+            <button type="button" className="btn btn-warning m-1"
               onClick={() => {
                 nav(`/post/${post._id}/edit`);
               }}

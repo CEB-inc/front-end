@@ -45,7 +45,7 @@ function Nav() {
             <div className="navbar-nav me-4"> Welcome {user && user.name} </div>
             <div className="navbar-nav">
               {user ? (
-                <button className="btn" onClick={onLogout}>
+                <button className="btn btn-secondary" onClick={onLogout}>
                   <FaSignOutAlt /> Logout
                 </button>
               ) : (

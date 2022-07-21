@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
 
 * {
   margin: 0;
@@ -146,39 +147,65 @@ h3 {
   }
 }
 
+@media only screen and (max-width: 939px) {
+  .form {
+      width: 90%;
+    }
+  
+    .heading h1 {
+      font-size: 2rem;
+    }
+  
+    .heading p {
+      font-size: 1.5rem;
+    }
 
+  .ListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
+  .card {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 940px) {
+  .ListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    width: 45%;
+  }
+}
 
 /* ---------- HOME SCREEN ------- */
 .Header {
   text-align: center;
 }
-
-.ListContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.LinkItem {
+  text-decoration: none;
+  list-style-type: none;
 }
-
-/*--------- list items ---------*/
-.card {
-  margin-bottom: 1rem;
-  margin-right: 1rem;
-  width: 45%;
-  background-color: lightblue;
-  border: 2px #66b2b2 solid;
-}
-
-/*--------- CATEGORY SELECT SCREEN -----------*/
-.catList {
-}
-.catListItem {
+.LinkItem:hover {
+  text-decoration: underline;
 }
 
 /*------- SHOW POST ----------*/
-
 .PostBody {
   white-space: pre-wrap;
 }
 
-/*------- NEW POST -------------*/
+/*------- SHOW CATEGORY ------------*/
+.CatText{
+  font-family: 'Koulen', cursive;
+  font-size: 30vw;
+}

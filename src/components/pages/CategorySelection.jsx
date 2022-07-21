@@ -15,11 +15,14 @@ function CategorySelection() {
 
   return (
     <>
-      <div >
-        <ul className="catList">
+      <div>
+        <h3 className="mt-5 mb-0 d-flex justify-content-center">Choose a category</h3>
+        <ul>
           {categories.map((cat, index) => (
-            <li key={index} className="catListItem">
-              <Link to={`/post/new/${cat}`}>{cat}</Link>
+            <li key={index} className="LinkItem d-flex justify-content-center">
+              <Link to={`/post/new/${cat}`} className="LinkItem text-body">
+                <p className="CatText text-body">{cat}</p>
+              </Link>
             </li>
         ))}
         </ul>

@@ -20,7 +20,7 @@ function PostList({ post }) {
               <p className='fw-bold fs-4 d-flex justify-content-center text-white bg-dark'>{post.title}</p>
               <p className='mt-2 d-flex justify-content-center'>A {post.category} on {post.media}</p>
               <p className='mx-3 d-flex justify-content-center'>{shortBody(post.body)}</p>
-              <p className='fw-bold fs-4 d-flex justify-content-center'>{post.score == null ? '' : `${post.score} /10`}</p>
+              <p className='fw-bold fs-4 d-flex justify-content-center'>{post.score == null ? '' : `${post.score}/10`}</p>
           </div>
       </Link>
     </li>

@@ -11,8 +11,6 @@ function reducer(state, action) {
         posts: action.data,
       };
     case "addPost":
-      console.log("state!", state);
-      console.log("action!", action);
       return {
         ...state,
         // this is setting what goes into posts array within initialState object. plus adding the extra.
@@ -37,8 +35,6 @@ function reducer(state, action) {
       const postsAfterDelete = [...state.posts].filter(
         (post) => postId !== post._id
       );
-
-      console.log("postsAfterDelete", postsAfterDelete);
 
       return {
         ...state,

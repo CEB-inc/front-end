@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+
 function PostList({ post }) {
   return (
     <li className='card' key={post._id}>

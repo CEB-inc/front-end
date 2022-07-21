@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createPost } from "../features/posts/postSlice";
 import usePostContext from "../../usePostContext";
+import FlashMessage from "react-flash-message";
 import "/src/index.css";
 
 function NewPost() {
@@ -15,7 +16,7 @@ function NewPost() {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { posts, isLoading, isError, message } = useSelector(
+  const { isError, message } = useSelector(
     (state) => state.posts
   );
   // useNavigate lets us force the user to a path
@@ -42,9 +43,7 @@ function NewPost() {
     );
 
     const postId = payload._id;
-
     postDispatch({ type: "addPost", payload });
-
     nav(`/post/${postId}`);
   }
 
@@ -52,6 +51,11 @@ function NewPost() {
     <>
       <h2 className="title is-2 my-4">New Post in {category}</h2>
       <form className="container" onSubmit={submit}>
+        <FlashMessage duration={5000}>
+          <div className="alert alert-danger" role="alert">
+            Fields cannot be empty
+          </div>
+        </FlashMessage>
         <div className="control mb-3">
           <div className="select">
             <select value={media} onChange={(e) => setMedia(e.target.value)}>

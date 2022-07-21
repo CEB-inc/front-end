@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deletePost, updatePost } from "../features/posts/postSlice";
+import { deletePost } from "../features/posts/postSlice";
 import { useParams, useNavigate } from "react-router-dom";
 import usePostContext from "../../usePostContext";
 
@@ -10,10 +10,13 @@ function ShowPost() {
 
   const post = [...store.posts].find((post) => post._id === id) || null;
 
+
+  
   const dispatchAuth = useDispatch();
   const nav = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const currentUserId = user._id;
+
 
   return post ? (
     <>
@@ -23,7 +26,6 @@ function ShowPost() {
       {post.score ? <h5 className="title is-1">score: {post.score}</h5> : ""}
       <p>Posted in {post.category}</p>
       <div>Time Posted: {new Date(post.createdAt).toLocaleString("en-AU")}</div>
-
       <div>
         {currentUserId === post.user && (
           <div>

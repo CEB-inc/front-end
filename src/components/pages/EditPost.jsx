@@ -7,16 +7,16 @@ import "/src/index.css";
 
 function EditPost() {
   const { store, dispatch: postDispatch } = usePostContext();
-  const { category } = useParams();
-  const [media, setMedia] = useState();
-  const [title, setTitle] = useState();
-  const [body, setBody] = useState();
-  const [score, setScore] = useState();
-  const dispatch = useDispatch();
 
   const { id } = useParams();
-
   const post = [...store.posts].find((post) => post._id === id) || null;
+
+  const { category } = useParams();
+  const [media, setMedia] = useState(post.media || "");
+  const [title, setTitle] = useState(post.title || "");
+  const [body, setBody] = useState(post.body || "");
+  const [score, setScore] = useState(post.score || "");
+  const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
   const { posts, isLoading, isError, message } = useSelector(
@@ -29,7 +29,6 @@ function EditPost() {
   // If no user, redirects to login
   useEffect(() => {
     if (isError) {
-      console.error(message);
     }
 
     if (!user) {
@@ -41,18 +40,20 @@ function EditPost() {
   async function submit(e) {
     e.preventDefault();
 
-    const originalPost = { ...post.id }
-    const updateParams = { ...originalPost, media: "", title: "New title", body: "New body", score: "" };
+    const updateParams = {
+      ...post,
+      media,
+      title,
+      body,
+      score,
+    };
     // // then give it to your redux api thing
-    // const response = await dispatch(updatePost(updateParams, etc));
 
-    const response = await dispatch(
-      updatePost({ updateParams, user, category, media, title, body, score })
-    );
+    const response = await dispatch(updatePost(updateParams));
 
-    const postId = response._id;
+    const postId = response.payload._id;
 
-    postDispatch({ type: "updatePost", payload });
+    postDispatch({ type: "updatePost", payload: updateParams });
 
     nav(`/post/${postId}`);
   }
@@ -63,7 +64,7 @@ function EditPost() {
       <form className="container" onSubmit={submit}>
         <div className="control mb-3">
           <div className="select">
-            <select value={post.media} onChange={(e) => setMedia(e.target.value)}>
+            <select value={media} onChange={(e) => setMedia(e.target.value)}>
               <option>Select Media</option>
               <option>Music</option>
               <option>Games</option>
@@ -73,7 +74,7 @@ function EditPost() {
         </div>
         <div>
           <input
-            value={post.title}
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
             className="input mb-3"
             placeholder="Title: "
@@ -81,7 +82,7 @@ function EditPost() {
         </div>
         <div>
           <textarea
-            value={post.body}
+            value={body}
             onChange={(e) => setBody(e.target.value)}
             className="textarea mb-3"
             placeholder="What are you about to babble about!?"
@@ -90,7 +91,7 @@ function EditPost() {
         {category === "Review" ? (
           <div>
             <input
-              value={post.score}
+              value={score}
               onChange={(e) => setScore(e.target.value)}
               className="input mb-3"
               placeholder="Score: "

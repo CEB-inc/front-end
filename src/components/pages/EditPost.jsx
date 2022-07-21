@@ -11,7 +11,7 @@ function EditPost() {
   const { id } = useParams();
   const post = [...store.posts].find((post) => post._id === id) || null;
 
-  const { category } = useParams();
+  const [category, setCategory] = useState(post.category || "");
   const [media, setMedia] = useState(post.media || "");
   const [title, setTitle] = useState(post.title || "");
   const [body, setBody] = useState(post.body || "");
@@ -33,6 +33,12 @@ function EditPost() {
       nav("/login");
     }
   }, [user, nav, isError, message, dispatch]);
+
+  // a for loop for score selection 1-10
+  const scoreOptions = [<option key={0}>Rating:</option>]
+  for (let i = 1; i <= 10; i++) {
+    scoreOptions.push(<option key={i}>{i}</option>)
+  }
 
   // What happens on submit. the press of the button.
   async function submit(e) {
@@ -57,11 +63,11 @@ function EditPost() {
 
   return (
     <>
-      <h2 className="title is-2 my-4">Edit Post {category}</h2>
+      <h2 className="fw-bold fs-3 d-flex justify-content-center">Edit {category}</h2>
       <form className="container" onSubmit={submit}>
-        <div className="control mb-3">
-          <div className="select">
-            <select value={media} onChange={(e) => setMedia(e.target.value)}>
+        <div className="mb-3 d-flex justify-content-center">
+          <div>
+            <select className="form-select" value={media} onChange={(e) => setMedia(e.target.value)}>
               <option>Select Media</option>
               <option>Music</option>
               <option>Games</option>
@@ -69,30 +75,38 @@ function EditPost() {
             </select>
           </div>
         </div>
-        <div>
-          <input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="input mb-3"
-            placeholder="Title: "
-          ></input>
-        </div>
-        <div>
-          <textarea
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-            className="textarea mb-3"
-            placeholder="What are you about to babble about!?"
-          ></textarea>
-        </div>
-        {category === "Review" ? (
+        <div className='mb-3 d-flex justify-content-center'>
           <div>
             <input
-              value={score}
-              onChange={(e) => setScore(e.target.value)}
-              className="input mb-3"
-              placeholder="Score: "
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              type='input'
+              className="form-control"
+              placeholder="Title: "
             ></input>
+          </div>
+        </div>
+        <div className='mb-3'>
+          <div>
+            <textarea
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+              className="form-control"
+              placeholder="What are you about to babble about!?"
+            ></textarea>
+          </div>
+        </div>
+        {category === "Review" ? (
+          <div className="mb-3 d-flex justify-content-center">
+            <div>
+              <select
+                value={score}
+                onChange={(e) => setScore(e.target.value)}
+                className="mb-3 form-select"
+              >
+                {scoreOptions}
+              </select>
+            </div>
           </div>
         ) : (
           ""

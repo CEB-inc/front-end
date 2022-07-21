@@ -19,9 +19,7 @@ function EditPost() {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { posts, isLoading, isError, message } = useSelector(
-    (state) => state.posts
-  );
+  const { isError, message } = useSelector((state) => state.posts);
   // useNavigate lets us force the user to a path
   const nav = useNavigate();
 
@@ -47,7 +45,6 @@ function EditPost() {
       body,
       score,
     };
-    // // then give it to your redux api thing
 
     const response = await dispatch(updatePost(updateParams));
 

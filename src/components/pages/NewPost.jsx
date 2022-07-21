@@ -13,14 +13,18 @@ function NewPost() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [score, setScore] = useState("");
+  const [errored, setErrored] = useState(false);
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  const { isError, message } = useSelector(
-    (state) => state.posts
-  );
+  const { isError, message } = useSelector((state) => state.posts);
   // useNavigate lets us force the user to a path
   const nav = useNavigate();
+
+  // clear errors on field changes
+  useEffect(() => {
+    setErrored(false);
+  }, [media, title, body, score]);
 
   // Checks to see if a user is logged in
   // If no user, redirects to login
@@ -38,24 +42,32 @@ function NewPost() {
   async function submit(e) {
     e.preventDefault();
 
-    const { payload } = await dispatch(
+    const response = await dispatch(
       createPost({ user, category, media, title, body, score })
     );
 
-    const postId = payload._id;
-    postDispatch({ type: "addPost", payload });
-    nav(`/post/${postId}`);
+    switch (response.type) {
+      case "posts/create/fulfilled":
+        const postId = response.payload._id;
+
+        postDispatch({ type: "addPost", payload: response.payload });
+        nav(`/post/${postId}`);
+      default:
+        setErrored(true);
+    }
   }
 
   return (
     <>
       <h2 className="title is-2 my-4">New Post in {category}</h2>
       <form className="container" onSubmit={submit}>
-        <FlashMessage duration={5000}>
-          <div className="alert alert-danger" role="alert">
-            Fields cannot be empty
-          </div>
-        </FlashMessage>
+        {errored && (
+          <FlashMessage duration={5000}>
+            <div className="alert alert-danger" role="alert">
+              Please fill in all fields.
+            </div>
+          </FlashMessage>
+        )}
         <div className="control mb-3">
           <div className="select">
             <select value={media} onChange={(e) => setMedia(e.target.value)}>

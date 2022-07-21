@@ -38,9 +38,7 @@ function ShowPost() {
             </button>
             <button
               onClick={() => {
-                dispatchAuth(updatePost(post._id));
-                dispatch({ type: "updatePost", payload: post._id });
-                nav(`/post/edit/${post._id}`);
+                nav(`/post/${post._id}/edit`);
               }}
             >
               Edit

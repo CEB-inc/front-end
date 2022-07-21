@@ -51,10 +51,10 @@ export const getPosts = createAsyncThunk(
 // Update post
 export const updatePost = createAsyncThunk(
   "posts/update",
-  async (postData, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return postService.updatePost(postData, token);
+      return postService.updatePost(id, token);
     } catch (error) {
       const message =
         (error.response &&

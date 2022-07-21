@@ -45,9 +45,6 @@ function NewPost() {
 
     postDispatch({ type: "addPost", payload });
 
-    // Implement code below into update post form
-    // postDispatch({ type: "updatePost", payload });
-
     nav(`/post/${postId}`);
   }
 
@@ -93,7 +90,7 @@ function NewPost() {
         ) : (
           ""
         )}
-        <button className="button is-info is-outlined">Create Post</button>
+        <button className="btn m-auto">Create Post</button>
       </form>
     </>
   );

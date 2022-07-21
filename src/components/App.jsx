@@ -39,7 +39,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/category" element={<CategorySelection />} />
           <Route path="/post/:id" element={<ShowPost />} />
-          <Route path="/post/edit/:id" element={<EditPost />} />
+          <Route path="/post/:id/edit" element={<EditPost />} />
           <Route path="/post/new/:category" element={<NewPost />} />
           <Route path="*" element={<h4>Page not found</h4>} />
         </Routes>

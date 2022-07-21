@@ -36,7 +36,7 @@ function EditPost() {
 
   // a for loop for score selection 1-10
   const scoreOptions = [<option key={0}>Rating:</option>]
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 0; i <= 10; i++) {
     scoreOptions.push(<option key={i}>{i}</option>)
   }
 
@@ -46,6 +46,7 @@ function EditPost() {
 
     const updateParams = {
       ...post,
+      category,
       media,
       title,
       body,
@@ -66,12 +67,17 @@ function EditPost() {
       <h2 className="fw-bold fs-3 d-flex justify-content-center">Edit {category}</h2>
       <form className="container" onSubmit={submit}>
         <div className="mb-3 d-flex justify-content-center">
-          <div>
+          <div className='me-1'>
             <select className="form-select" value={media} onChange={(e) => setMedia(e.target.value)}>
-              <option>Select Media</option>
               <option>Music</option>
               <option>Games</option>
               <option>Movies</option>
+            </select>
+          </div>
+          <div>
+            <select className="form-select" value={category} onChange={(e) => setCategory(e.target.value)}>
+              <option>Blog</option>
+              <option>Review</option>
             </select>
           </div>
         </div>
@@ -109,12 +115,12 @@ function EditPost() {
             </div>
           </div>
         ) : (
-          ""
+            ""
         )}
         <button className="btn m-auto">Update Post</button>
       </form>
     </>
-  );
+  )
 }
 
 export default EditPost;

@@ -36,7 +36,7 @@ function ShowPost() {
       <h4 className="d-flex justify-content-center"><strong>{post.title}</strong></h4>
       <h5 className="d-flex justify-content-center">A {post.category} in {post.media}</h5>
       <p className="m-4 d-flex justify-content-center PostBody">{post.body}</p>
-      {post.score ? <h4 className="d-flex justify-content-center">score: {post.score}/10</h4> : ""}
+      {post.category === "Blog" ?  "" : <h4 className="d-flex justify-content-center">score: {post.score}/10</h4>}
       {userData && <h4 className="d-flex justify-content-center">Author: {userData.name}</h4>}
       <div className="d-flex justify-content-center">Time Posted: {new Date(post.createdAt).toLocaleString("en-AU")}</div>
       

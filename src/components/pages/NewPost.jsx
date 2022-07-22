@@ -19,7 +19,6 @@ function NewPost() {
   // useNavigate lets us force the user to a path
   const nav = useNavigate();
 
-
   // Checks to see if a user is logged in
   // If no user, redirects to login
   useEffect(() => {
@@ -33,9 +32,9 @@ function NewPost() {
   }, [user, nav, isError, message, dispatch]);
 
   // a for loop for score selection 1-10
-  const scoreOptions = [<option key={0}>Rating:</option>]
+  const scoreOptions = [<option key={0}>Rating:</option>];
   for (let i = 1; i <= 10; i++) {
-    scoreOptions.push(<option key={i}>{i}</option>)
+    scoreOptions.push(<option key={i}>{i}</option>);
   }
 
   // What happens on submit. the press of the button.
@@ -50,20 +49,29 @@ function NewPost() {
       case "posts/create/fulfilled":
         const postId = response.payload._id;
 
-        postDispatch({ type: "addPost", payload: response.payload });
+        postDispatch({
+          type: "addPost", payload: response.payload
+        });
         nav(`/post/${postId}`);
+        break;
       default:
-        setErrored(true);
+        console.error("error response", response);
     }
   }
 
   return (
     <>
-      <h2 className="fw-bold fs-3 d-flex justify-content-center">New Post in {category}</h2>
+      <h2 className="fw-bold fs-3 d-flex justify-content-center">
+        New Post in {category}
+      </h2>
       <form className="container" onSubmit={submit}>
         <div className="mb-3 d-flex justify-content-center">
           <div>
-            <select className="form-select" value={media} onChange={(e) => setMedia(e.target.value)}>
+            <select
+              className="form-select"
+              value={media}
+              onChange={(e) => setMedia(e.target.value)}
+            >
               <option>Select Media</option>
               <option>Music</option>
               <option>Games</option>
@@ -71,18 +79,18 @@ function NewPost() {
             </select>
           </div>
         </div>
-        <div className='mb-3 d-flex justify-content-center'>
+        <div className="mb-3 d-flex justify-content-center">
           <div>
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              type='input'
+              type="input"
               className="form-control"
               placeholder="Title: "
             ></input>
           </div>
         </div>
-        <div className='mb-3'>
+        <div className="mb-3">
           <div>
             <textarea
               value={body}
@@ -107,7 +115,9 @@ function NewPost() {
         ) : (
           ""
         )}
-        <button id="butt1" className="btn m-auto">Create Post</button>
+        <button id="butt1" className="btn m-auto">
+          Create Post
+        </button>
       </form>
     </>
   );

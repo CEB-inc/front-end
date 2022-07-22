@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createPost } from "../features/posts/postSlice";
 import usePostContext from "../../usePostContext";
-import FlashMessage from "react-flash-message";
 import "/src/index.css";
 
 function NewPost() {
@@ -13,7 +12,6 @@ function NewPost() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [score, setScore] = useState("");
-  const [errored, setErrored] = useState(false);
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
@@ -21,10 +19,6 @@ function NewPost() {
   // useNavigate lets us force the user to a path
   const nav = useNavigate();
 
-  // clear errors on field changes
-  useEffect(() => {
-    setErrored(false);
-  }, [media, title, body, score]);
 
   // Checks to see if a user is logged in
   // If no user, redirects to login
@@ -67,13 +61,6 @@ function NewPost() {
     <>
       <h2 className="fw-bold fs-3 d-flex justify-content-center">New Post in {category}</h2>
       <form className="container" onSubmit={submit}>
-        {errored && (
-          <FlashMessage duration={5000}>
-            <div className="alert alert-danger" role="alert">
-              Please fill in all fields.
-            </div>
-          </FlashMessage>
-        )}
         <div className="mb-3 d-flex justify-content-center">
           <div>
             <select className="form-select" value={media} onChange={(e) => setMedia(e.target.value)}>
@@ -120,7 +107,7 @@ function NewPost() {
         ) : (
           ""
         )}
-        <button className="btn m-auto">Create Post</button>
+        <button id="butt1" className="btn m-auto">Create Post</button>
       </form>
     </>
   );

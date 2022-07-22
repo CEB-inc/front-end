@@ -44,7 +44,7 @@ function ShowPost() {
       <div className="d-flex justify-content-center">
         {currentUserId === post.user && (
           <div className="d-flex">
-            <button id='butt' type="button" className="btn m-1"
+            <button id='butt3' type="button" className="btn m-1"
               onClick={() => {
                 dispatchAuth(deletePost(post._id));
                 dispatch({ type: "deletePost", payload: post._id });
@@ -53,7 +53,7 @@ function ShowPost() {
             >
               Delete
             </button>
-            <button id='butt' type="button" className="btn m-1"
+            <button id='butt4' type="button" className="btn m-1"
               onClick={() => {
                 nav(`/post/${post._id}/edit`);
               }}

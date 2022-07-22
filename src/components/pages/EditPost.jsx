@@ -6,7 +6,7 @@ import usePostContext from "../../usePostContext";
 import "/src/index.css";
 
 function EditPost() {
-  const { store, dispatch: { postDispatch } } = usePostContext();
+  const { store, dispatch: postDispatch } = usePostContext();
 
   const { id } = useParams();
   const post = [...store.posts].find((post) => post._id === id) || null;

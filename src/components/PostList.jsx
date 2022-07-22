@@ -17,7 +17,7 @@ function PostList() {
     </ul>
   ) : (
     <p>Loading ...</p>
-  );
+      );
 }
 
 export default PostList;

@@ -115,7 +115,7 @@ function SignUp() {
               />
             </div>
             <div className="form-group">
-              <button type="submit" className="btn btn-block">
+              <button type="submit" id="butt" className="btn btn-block">
                 Submit
               </button>
             </div>

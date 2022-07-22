@@ -117,7 +117,7 @@ function EditPost() {
         ) : (
             ""
         )}
-        <button className="btn m-auto">Update Post</button>
+        <button id="butt" className="btn m-auto">Update Post</button>
       </form>
     </>
   )

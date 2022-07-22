@@ -1,6 +1,8 @@
 import axios from "axios";
+  const api =
+    import.meta.env.VITE_API_ENDPOINT || "http://localhost:4000/api/v1";
 
-const API_URL = "http://localhost:4000/api/v1/posts";
+const API_URL = `${api}/posts`;
 
 // Create new post
 const createPost = async (postData, token) => {

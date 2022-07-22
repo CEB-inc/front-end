@@ -13,13 +13,15 @@ import useStore from "../reducer";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 
+const api = import.meta.env.VITE_API_ENDPOINT || "http://localhost:4000/api/v1";
 function App() {
   // dispatch is what we call(similar to setPosts), initialState is the initial state
+
   const [store, dispatch] = useStore();
 
   useEffect(() => {
     async function getPosts() {
-      const res = await fetch("http://localhost:4000/api/v1/posts");
+      const res = await fetch(`${api}/posts`);
       dispatch({
         type: "setPosts",
         data: await res.json(),

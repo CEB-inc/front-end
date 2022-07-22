@@ -2,8 +2,10 @@
 // and setting any data in local storage
 // Axios is a postman equivilent that works within the app
 import axios from "axios";
+  const api =
+    import.meta.env.VITE_API_ENDPOINT || "http://localhost:4000/api/v1";
 
-const API_URL = "http://localhost:4000/api/v1/users/";
+const API_URL = `${api}/users/`;
 
 // SignUp user
 const register = async (userData) => {

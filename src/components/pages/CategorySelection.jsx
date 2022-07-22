@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 
 function CategorySelection() {
   const [categories, setCategories] = useState([])
+  const api =
+    import.meta.env.VITE_API_ENDPOINT || "http://localhost:4000/api/v1";
 
   useEffect(() => {
     async function getCategories() {
-      const res = await fetch('http://localhost:4000/api/v1/categories')
+      const res = await fetch(`${api}/categories`)
       setCategories(await res.json())
     }
     getCategories()

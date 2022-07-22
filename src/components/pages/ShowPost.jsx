@@ -6,6 +6,8 @@ import usePostContext from "../../usePostContext";
 
 function ShowPost() {
   const { id } = useParams();
+  const api =
+    import.meta.env.VITE_API_ENDPOINT || "http://localhost:4000/api/v1";
 
   const [userData, setUserData] = useState(null);
 
@@ -15,7 +17,7 @@ function ShowPost() {
 
   useEffect(() => {
     async function getUser(userId) {
-      const res = await fetch(`http://localhost:4000/api/v1/users/${userId}`);
+      const res = await fetch(`${api}/users/${userId}`);
       const postUser = await res.json();
       if (postUser) {
         setUserData(postUser);

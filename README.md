@@ -11,17 +11,12 @@
 
 ### R10 - A link (URL) to the deployed website
 
-Link: 
+Link: https://symphonious-babka-95464a.netlify.app/
 
 ---
 
 ### R11 - A link to the GitHub repository for your project
 
-**MUST TAKE REPOS OFF PRIVATE BEFORE SUBMITTING!!**
-
-**MUST TAKE REPOS OFF PRIVATE BEFORE SUBMITTING!!**
-
-**MUST TAKE REPOS OFF PRIVATE BEFORE SUBMITTING!!**
 
 Front-end:  https://github.com/CEB-inc/front-end
 

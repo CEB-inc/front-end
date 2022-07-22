@@ -30,6 +30,7 @@ function ShowPost() {
   const nav = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const currentUserId = user._id;
+  
 
   return post ? (
     <>
